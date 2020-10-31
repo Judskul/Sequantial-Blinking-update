@@ -101,6 +101,12 @@ void MX_GPIO_Init(void)
 	/*LD Config, set state of LD1 and LD2 */
 	HAL_GPIO_WritePin(LD1_GPIO_Port,LD1_Pin,GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LD2_GPIO_Port,LD2_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LD3_GPIO_Port,LD3_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LD4_GPIO_Port,LD4_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LD5_GPIO_Port,LD5_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LD6_GPIO_Port,LD6_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LD7_GPIO_Port,LD7_Pin,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LD8_GPIO_Port,LD8_Pin,GPIO_PIN_RESET);
 	
 
   /*Configure GPIO pins : PEPin PEPin */
@@ -159,19 +165,27 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(KEY_GPIO_Port, &GPIO_InitStruct);
 	
 	/////////////////////////Pertains to Blinking Tutorial//////////////////////////////////////////////
-  //Debug Light - LD1 
-	GPIO_InitStruct.Pin = LD1_Pin; //Pin number
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; //Mode - Output_PP means GPIO initialized as a digital output pin (instead of an import or PWM port pin)
-  GPIO_InitStruct.Pull = GPIO_NOPULL; //Pull up/pulldown resistor setting
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; //Frequency, usually it doesn't matter unless we get to very hgih speeds
-  HAL_GPIO_Init(LD1_GPIO_Port, &GPIO_InitStruct); //Initialization function to pass all parameters above into the pin
-	
-	//Debug Light - LD2
-	GPIO_InitStruct.Pin = LD2_Pin;
+////  //Debug Light - LD1 
+////	GPIO_InitStruct.Pin = LD1_Pin; //Pin number
+////  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; //Mode - Output_PP means GPIO initialized as a digital output pin (instead of an import or PWM port pin)
+////  GPIO_InitStruct.Pull = GPIO_NOPULL; //Pull up/pulldown resistor setting
+////  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; //Frequency, usually it doesn't matter unless we get to very hgih speeds
+////  HAL_GPIO_Init(LD1_GPIO_Port, &GPIO_InitStruct); //Initialization function to pass all parameters above into the pin
+////	
+////	//Debug Light - LD2
+////	GPIO_InitStruct.Pin = LD2_Pin;
+////  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+////  GPIO_InitStruct.Pull = GPIO_NOPULL;
+////  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+////  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+
+	//Debug Light - LD1-LD8
+	GPIO_InitStruct.Pin = (LD1_Pin|LD2_Pin|LD3_Pin|LD4_Pin|LD5_Pin|LD6_Pin|LD7_Pin|LD8_Pin);
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
 	/////////////////////////Pertains to Blinking Tutorial//////////////////////////////////////////////
 	
 	
